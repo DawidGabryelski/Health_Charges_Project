@@ -1,14 +1,14 @@
 -- średnia opłata według płci --
 select 
 	 sex
-	,round(avg(charges),2)																		as average_charges
+	,round(avg(charges),2)												as average_charges
 from health
 group by 1;
 
 -- palacze według płci --
 select 
 	sex
-	,count(*)																					as number_of_respondents
+	,count(*)													as number_of_respondents
 from health h 
 where smoker = 'yes'
 group by 1
@@ -16,7 +16,7 @@ group by 1
 -- liczba palaczy według płci --
 select 
 	 sex
-	,count(*) 																					as smokers
+	,count(*) 													as smokers
 from health
 where smoker = 'yes'
 group by 1;
@@ -24,7 +24,7 @@ group by 1;
 -- średnia liczba dzieci wg. płci -- 
 select 
 	 sex
-	,round(avg(children),2)																		as average_nr_of_children
+	,round(avg(children),2)												as average_nr_of_children
 from health
 group by 1;
 
@@ -50,7 +50,7 @@ as(
 as(
 	select 
 		 age_groups
-		,round(avg(charges),2)																	as	average_charges
+		,round(avg(charges),2)											as average_charges
 	from age_groups
 	group by 1
 	order by 1
@@ -59,7 +59,7 @@ as(
  as(
 	select 
 		 age_groups
-		,count(age)																				as nr_of_no_smokers					
+		,count(age)												as nr_of_no_smokers					
 	from age_groups
 	where smoker = 'no'
 	group by 1
@@ -69,7 +69,7 @@ as(
 as(
 	select 
 		 age_groups
-		,count(age_groups.age)																	as nr_of_smokers
+		,count(age_groups.age)											as nr_of_smokers
 	from age_groups
 	where smoker = 'yes'
 	group by 1
