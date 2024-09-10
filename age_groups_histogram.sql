@@ -83,6 +83,26 @@ join nr_of_non_smokers on nr_of_smokers.age_groups = nr_of_non_smokers.age_group
 	)
 select * from smokers_histogram;
 
+select 
+	'parents'
+	,count(*)		as sum_of
+from health h 
+where children > 0
+union
+select
+	'childless'
+	,count(*)		as sum_of
+from health h 
+where children = 0;
+
+
+select 
+	children
+	,round(avg(charges),2) as avg_charges
+from health h 
+group by 1
+order by 1
+
 
 
 
